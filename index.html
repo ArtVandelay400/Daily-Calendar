@@ -38,40 +38,48 @@
       <p id="currentDay" class="lead"></p>
     </header>
     <div class="container">
-      <div class= "timeRow1">9:00 AM</div>
-        <textarea class= "text1" id = "9" rows="5" cols="101"></textarea>
-        <div class= "save1">save button</div>
-      <div class= "timeRow">10:00 AM</div>
-        <div id = "10" class= "form">enter text here</div>
-        <div class= "save">save button</div>
-      <div class= "timeRow">11:00 AM</div>
-        <div id = "11" class= "form">enter text here</div>
-        <div class= "save">save button</div>
-      <div class= "timeRow">12:00 PM</div>
-        <div id = "12" class= "form">enter text here</div>
-        <div class= "save">save button</div>
-      <div class= "timeRow">1:00 PM</div>
-        <div id = "13" class= "form">enter text here</div>
-        <div class= "save">save button</div>
-      <div class= "timeRow">2:00 PM</div>
-        <div id = "14" class= "form">enter text here</div>
-        <div class= "save">save button</div>
-      <div class= "timeRow">3:00 PM</div>
-        <div id = "15" class= "form">enter text here</div>
-        <div class= "save">save button</div>
-      <div class= "timeRow">4:00 PM</div>
-        <div id = "16" class= "form">enter text here</div>
-        <div class= "save">save button</div>
-      <div class= "timeRow">5:00 PM</div>
-        <div id = "17" class= "form">enter text here</div>
-        <div class= "save">save button</div>
+      <div class= "timeRow">9 AM</div>
+        <textarea class= "text" id = "9" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      <div class= "timeRow">10 AM</div>
+        <textarea class= "text" id = "10" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      <div class= "timeRow">11 AM</div>
+        <textarea class= "text" id = "11" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      <div class= "timeRow">12 PM</div>
+        <textarea class= "text" id = "12" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      <div class= "timeRow">1 PM</div>
+        <textarea class= "text" id = "13" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      <div class= "timeRow">2 PM</div>
+        <textarea class= "text" id = "14" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      <div class= "timeRow">3 PM</div>
+        <textarea class= "text" id = "15" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      <div class= "timeRow">4 PM</div>
+        <textarea class= "text" id = "16" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      <div class= "timeRow">5 PM</div>
+        <textarea class= "text" id = "17" rows="6" cols="101"></textarea>
+        <div class= "save">SAVE</div>
+      
     </div>
+    <br>
 
     <script>
-         
+    $(document).ready(function(){
+      for (var i = 9; i < 18; i++) {
+        $("#"+i).val(localStorage.getItem("textItem"+i));
+        }
+      })
+      
+
       $(document).ready(function(){
-       $(".text1").val(localStorage.getItem("textItem1"));
-        var timeNow = moment().format('MMMM Do YYYY, h:mm:ss a');
+      //  $(".text1").val(localStorage.getItem("textItem1"));
+        var timeNow = moment().format('MMMM Do YYYY');
         $("#currentDay").append(timeNow)
       })
 
@@ -84,20 +92,25 @@
         } else {
           $("#"+i).css("background-color", "red")
         }
+      }
+      
 
-      } 
+      // $(document).ready(function(){ 
+      //  $(".save1").on("click", function(){
+      //   var text = $(".text1").val()
+      //   console.log(text);
+      //    localStorage.setItem("textItem1", text);
+      //    $(".text1").val(localStorage.getItem("textItem1"));
+      //   console.log($(".text1").val());
+      // })});
 
       $(document).ready(function(){ 
-       $(".save1").on("click", function(){
-        var text = $(".text1").val()
-        console.log(text);
-         localStorage.setItem("textItem1", text);
-         $(".text1").val(localStorage.getItem("textItem1"));
-        console.log($(".text1").val());
-      })});
-  
-
-      
+       $(".save").on("click", function(){
+        var text = $(this).prev(".text").val()
+        var number= $(this).prev(".text").attr("id")
+         localStorage.setItem(("textItem"+ number), text);
+         $(this).prev("#"+number).val(localStorage.getItem("textItem"+ number));
+      })})
     </script>
 
 
