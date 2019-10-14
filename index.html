@@ -27,10 +27,6 @@
       <script src = "lib/moment.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-  
-        
-
-
 
     <header class= "jumbotron">
       <h1 class="display-3">Work Day Scheduler</h1>
@@ -67,53 +63,8 @@
         <div class= "save">SAVE</div>
       
     </div>
-    <br>
 
-    <script>
-    $(document).ready(function(){
-      for (var i = 9; i < 18; i++) {
-        $("#"+i).val(localStorage.getItem("textItem"+i));
-        }
-      })
-      
-
-      $(document).ready(function(){
-      //  $(".text1").val(localStorage.getItem("textItem1"));
-        var timeNow = moment().format('MMMM Do YYYY');
-        $("#currentDay").append(timeNow)
-      })
-
-      for (var i = 9; i < 18; i++) {
-        var time= (moment().format('H'));
-        if((i)< time){
-          $("#"+i).css("background-color", "gray");
-        } else if((i)> time) {
-          $("#"+i).css("background-color", "green")
-        } else {
-          $("#"+i).css("background-color", "red")
-        }
-      }
-      
-
-      // $(document).ready(function(){ 
-      //  $(".save1").on("click", function(){
-      //   var text = $(".text1").val()
-      //   console.log(text);
-      //    localStorage.setItem("textItem1", text);
-      //    $(".text1").val(localStorage.getItem("textItem1"));
-      //   console.log($(".text1").val());
-      // })});
-
-      $(document).ready(function(){ 
-       $(".save").on("click", function(){
-        var text = $(this).prev(".text").val()
-        var number= $(this).prev(".text").attr("id")
-         localStorage.setItem(("textItem"+ number), text);
-         $(this).prev("#"+number).val(localStorage.getItem("textItem"+ number));
-      })})
-    </script>
-
-
+    <script src = "script.js"></script>
 
   </body>
 </html>
